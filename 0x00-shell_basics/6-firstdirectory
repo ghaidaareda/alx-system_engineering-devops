@@ -1,0 +1,2 @@
+#!/bin/bash
+mktepm -d my_first_directory
