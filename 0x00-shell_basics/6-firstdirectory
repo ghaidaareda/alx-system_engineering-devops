@@ -1,2 +1,2 @@
 #!/bin/bash
-mktepm -d my_first_directory
+tmp_dir=$(mktemp -d -t ci-my_first_directory)
