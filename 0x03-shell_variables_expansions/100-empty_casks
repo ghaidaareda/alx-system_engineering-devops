@@ -1,1 +1,2 @@
+#!/bin/bash
 find . .. -typt d -empty | grep -l | ls -a | tr ' ' '\n' 
