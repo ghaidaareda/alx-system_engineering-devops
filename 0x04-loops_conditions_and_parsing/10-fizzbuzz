@@ -3,16 +3,17 @@
 number=1
 while [ $number -le 100 ]
 do
-	echo "$number"
-	if [ $(($number%3)) == 0 ]
+	if ((number%3 == 0 ))  && ((number%5 == 0 ))
 	then
-		echo "Fizz"
-	elif [ $(($number%5 == 0)) ] 
+		echo "FizzBuzz"
+	elif ((number%5 == 0))
         then
                 echo "Buzz"
-	elif [ $(($number%3 == 0)) ] && [ $(($number%5==0)) ]
+	elif ((number%3 == 0))
         then
-                echo "FizzBuzz"
+                echo "Fizz"
+	else
+		echo "$number"
 	fi
 	number=$(( number+1 ))
 done
