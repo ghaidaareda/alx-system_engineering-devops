@@ -3,9 +3,10 @@
 
 for file in *
 do
-    if [ -f "$file" ] && [[ "$file" != .* ]] && [[ "$file" == *-* ]]
+    if [ "${file:0:1}" != "." ]
     then
-        echo "${file#*-}"
+        name="$(echo "$file" | cut -d'-' -f2-)"
+	echo "$name"
     fi
 done
 
