@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#Bash script that  terminate To infinity and beyond
+kill -TERM $(pidof bash)
