@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Bash script that  terminate To infinity and beyond
 
-kill "$(pgrep -f 7-highlander)"
+kill -SIGKILL "$(pgrep -f 7-highlander)"
