@@ -9,7 +9,7 @@ do
 	do
 		echo "$i"
 		i=$(( i+1 ))
-		if [ $i = 59 ]
+		if [ $i = 60 ]
 		then
 			break
 		fi
