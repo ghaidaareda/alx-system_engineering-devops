@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+number=0
+while [ $number -le 12 ]
+do 
+	echo "Hour: $number"
+	for (( i=1 ; i < 60 ; i++ ))
+	do
+		echo "$i"
+		if [ $i = 59 ]
+		then
+			break
+		fi
+	done
+	number=$(( number+1 ))
+done
