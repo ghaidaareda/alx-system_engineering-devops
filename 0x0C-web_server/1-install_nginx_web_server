@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Bash script that install nginx & change welcome page
+
+sudo apt update
+sudo apt-get -y install nginx
+sudo netstat -tuln | grep ":80.*LISTEN"
+sudo chown -R "$USER":"$USER" /var/www/html
+
+sudo bash -c 'cat > /var/www/html/index.nginx-debian.html <<EOF
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>
+EOF'
+
+sudo service nginx restart
+
