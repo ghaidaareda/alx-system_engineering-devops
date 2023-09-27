@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Bash script that installs nginx & changes the welcome page
+
+sudo apt update
+sudo apt-get -y install nginx
+sudo netstat -tuln | grep ":80.*LISTEN"
+sudo chown /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html 
+sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo service nginx restart
+
