@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-#Bash script that install nginx & change welcome page
+# Bash script that installs nginx & changes the welcome page
 
 sudo apt update
 sudo apt-get -y install nginx
 sudo netstat -tuln | grep ":80.*LISTEN"
-sudo chown -R "$USER":"$USER" /var/www/html
-
-echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+sudo chown www-data:www-data /var/www/html/index.nginx-debian.html
+echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
 sudo service nginx restart
 
