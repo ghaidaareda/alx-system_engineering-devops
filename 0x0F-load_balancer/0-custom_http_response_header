@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#configure web-02 to be identical to web-01 & add a custom Nginx response header
+sudo apt update
+sudo apt-get -y install nginx
+sudo netstat -tuln | grep ":80.*LISTEN"
+sudo bash -c 'echo "add_header X-Served-By \$hostname;" >> /etc/nginx/nginx.conf'
+sudo service nginx restart
