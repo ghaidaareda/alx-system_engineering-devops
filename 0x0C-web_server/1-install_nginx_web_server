@@ -4,6 +4,7 @@
 sudo apt update
 sudo apt-get -y install nginx
 sudo netstat -tuln | grep ":80.*LISTEN"
+sudo bash -c 'echo "add_header X-Served-By \$hostname;" >> /etc/nginx/nginx.conf'
 sudo chown /var/www/html/index.nginx-debian.html
 echo "Hello World!" > /var/www/html/index.nginx-debian.html 
 sudo service nginx restart
