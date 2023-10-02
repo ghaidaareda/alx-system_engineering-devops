@@ -9,5 +9,7 @@ sudo chown -R "$USER":"$USER" /etc/nginx/sites-available/default
 sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 sudo sed -i '/listen 80 default_server/a error_page 404 /404.html; location = /404.html {root /var/www/error/;internal; }' /etc/nginx/sites-available/default
 sudo chown -R "$USER":"$USER" /etc/nginx//nginx.conf
-sed -i '/http {/a \        add_header X-Served-By $hostname;' /etc/nginx/nginx.conf
+host=$HOSTNAME
+new_str="\\\tadd_header X-Served-By $host;"
+sudo sed -i "36i $new_str" /etc/nginx/sites-available/default
 sudo service nginx restart
