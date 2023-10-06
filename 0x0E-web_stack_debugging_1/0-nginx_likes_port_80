@@ -3,6 +3,8 @@
 
 sudo apt-get update
 sudo apt-get -y install nginx
+sudo systemctl status nginx
+sudo systemctl start nginx
 sudo apt install net-tools
 sudo netstat -tuln | grep ":80.*LISTEN"
 sudo service nginx restart
