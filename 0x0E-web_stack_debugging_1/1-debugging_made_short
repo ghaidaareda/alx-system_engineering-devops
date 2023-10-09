@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Bash script that installs nginx & changes the welcome page
 sudo apt-get -y install nginx
-sudo netstat -tuln | grep ":80.*LISTEN"
+sudo sed -i 's/listen \[::\]:80 default_server;/listen 80 default_server;/g' /etc/nginx/sites-available/default
 sudo service nginx stop
