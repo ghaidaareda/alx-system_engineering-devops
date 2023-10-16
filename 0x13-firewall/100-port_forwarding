@@ -73,13 +73,6 @@
 # allow MULTICAST UPnP for service discovery (be sure the MULTICAST line above
 # is uncommented)
 -A ufw-before-input -p udp -d 239.255.255.250 --dport 1900 -j ACCEPT
-<<<<<<< HEAD
-
-=======
-*nat
-:PREROUTING ACCEPT [0:0]
--A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
->>>>>>> f79016df09503a78c500b1b051d426d6a856d4b3
 # don't delete the 'COMMIT' line or these rules won't be processed
 COMMIT
 
