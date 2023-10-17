@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Bash script that installs nginx & changes the welcome page
 sudo apt-get -y install nginx
-sudo sed -i 's/listen \[::\]:80 default_server;/listen 8080 default_server;/g' /etc/nginx/sites-available/default
-sudo sed -i 's/^user .*/user "nginx";/' /etc/nginx/nginx.conf
+sudo sed -i 's/listen 80 default_server;/listen 8080 default_server;/g' /etc/nginx/sites-available/default
+chmod 644 /etc/nginx/nginx.conf
+sudo sed -i 's/^user .*/user nginx;/'  /etc/nginx/nginx.conf
 sudo service nginx restart
