@@ -5,7 +5,6 @@ using  REST API,
 for a given employee ID,
 returns information about his/her TODO list progress.
 """
-from sys import argv
 import requests
 
 
@@ -21,7 +20,7 @@ def get_employee_name(id):
 
 def to_do_done(id):
     """check done tasks"""
-    url = f'https://jsonplaceholder.typicode.com/todos'
+    url = f'https://jsonplaceholder.typicode.com/user/{id}/todos'
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
