@@ -10,6 +10,7 @@ from sys import argv
 
 
 def get_employee_name(id):
+    """get user name"""
     url = f'https://jsonplaceholder.typicode.com/users/{id}'
     response = requests.get(url)
     if response.status_code == 200:
@@ -19,6 +20,7 @@ def get_employee_name(id):
 
 
 def to_do_done(id):
+    """check done tasks"""
     url = f'https://jsonplaceholder.typicode.com/todos'
     response = requests.get(url)
     if response.status_code == 200:
@@ -31,7 +33,7 @@ def to_do_done(id):
                 done += 1
                 completed_tasks.append(item['title'])
         employee_name = get_employee_name(id)
-        print(f'Employee {employee_name} is done with tasks {done}/{total}')
+        print(f'Employee {employee_name} is done with tasks ({done}/{total})')
         for task in completed_tasks:
             print(f'\t {task}')
 
