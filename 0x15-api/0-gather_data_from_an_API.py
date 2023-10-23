@@ -5,8 +5,8 @@ using  REST API,
 for a given employee ID,
 returns information about his/her TODO list progress.
 """
-import requests
 from sys import argv
+import requests
 
 
 def get_employee_name(id):
@@ -33,7 +33,7 @@ def to_do_done(id):
                 done += 1
                 completed_tasks.append(item['title'])
         employee_name = get_employee_name(id)
-        print(f'Employee {employee_name} is done with tasks ({done}/{total})')
+        print(f'Employee {employee_name} is done with tasks({done}/{total})')
         for task in completed_tasks:
             print(f'\t {task}')
 
