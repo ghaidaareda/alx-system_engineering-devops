@@ -8,7 +8,7 @@ if __name__ == '__main__':
     import sys
 
     url_1 = f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}'
-    url_2 = f'https://jsonplaceholder.typicode.com/user/{sys.argv[1]}/todos'
+    url_2 = f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}/todos'
     response_1 = requests.get(url_1)
     response_2 = requests.get(url_2)
 
