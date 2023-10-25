@@ -1,31 +1,34 @@
 #!/usr/bin/python3
 """
-extend Python script to export data in the json format
-for all empolyee
+Extend Python script to export data in the JSON format for all employees' tasks.
 """
+import json
+import requests
+
 if __name__ == '__main__':
-    import json
-    import requests
-    import sys
+    url_users = 'https://jsonplaceholder.typicode.com/users'
+    url_todos = 'https://jsonplaceholder.typicode.com/todos'
 
-    url_1 = f'https://jsonplaceholder.typicode.com/users'
-    url_2 = f'https://jsonplaceholder.typicode.com/todos'
-    response_1 = requests.get(url_1)
-    response_2 = requests.get(url_2)
+    response_users = requests.get(url_users)
+    response_todos = requests.get(url_todos)
 
-    data_1 = response_1.json()
-    data_2 = response_2.json()
-    tasks = []
-    for user in data_1:
-        user_tasks = []
-        for item in data_2:
-            if item['userId'] == user['id']:
-                task = {"task": item['title'],
-                        "completed": item['completed'],
-                        "username": user['username']
-                        }
-            user_tasks.append(task)   
-        user_tasks_dict = {user['id']: user_tasks}
-        tasks.append(user_tasks_dict)
+    users = response_users.json()
+    todos = response_todos.json()
+
+    user_tasks = {}
+    for user in users:
+        user_id = user['id']
+        username = user['username']
+        user_tasks[user_id] = []
+
+        for todo in todos:
+            if todo['userId'] == user_id:
+                task = {
+                    "username": username,
+                    "task": todo['title'],
+                    "completed": todo['completed']
+                }
+                user_tasks[user_id].append(task)
+
     with open('todo_all_employees.json', 'w') as file:
-        json.dump(tasks, file)
+        json.dump(user_tasks, file)
