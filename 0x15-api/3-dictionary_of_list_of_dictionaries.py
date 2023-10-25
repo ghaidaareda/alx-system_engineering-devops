@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Extend Python script to export data in the JSON format for all employees' tasks.
+Extend Python script to export data in the
+JSON format for all employees' tasks.
 """
 import json
 import requests
