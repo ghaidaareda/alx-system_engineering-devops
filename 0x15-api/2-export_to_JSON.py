@@ -1,27 +1,31 @@
 #!/usr/bin/python3
 """
-extend Python script to export data in the CSV format
+script to for returning information about TODO list progress
+a given id
 """
-if __name__ == '__main__':
+if __name__ == "__main__":
     import json
     import requests
     import sys
 
-    url_1 = f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}'
-    url_2 = f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}/todos'
-    response_1 = requests.get(url_1)
-    response_2 = requests.get(url_2)
+    url1 = "https://jsonplaceholder.typicode.com/users/{}".format(sys.argv[1])
+    url2 = "https://jsonplaceholder.typicode.com/users/{}/todos".format(
+        sys.argv[1])
 
-    data_1 = response_1.json()
-    data_2 = response_2.json()
+    resp1 = requests.get(url1)
+    resp2 = requests.get(url2)
+
+    name = resp1.json()
+    data = resp2.json()
+
     tasks = []
-    for item in data_2:
-        task = {"task": item['title'],
-                "completed": item['completed'],
-                "username": data_1['username']
-                }
-        tasks.append(task)
-    user_tasks = {data_1['id']: tasks}
+    item = {}
 
-    with open(f'{sys.argv[1]}.json', 'w') as file:
-        json.dump(user_tasks, file)
+    for element in data:
+        item = {"task": element["title"], "completed": element["completed"],
+                "username": name["username"]}
+        tasks.append(item)
+
+    inf = {name["id"]: tasks}
+    with open("{}.json".format(sys.argv[1]), mode="w") as file:
+        json.dump(inf, file)
