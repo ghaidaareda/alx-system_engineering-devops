@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-extend Python script to export data in the CSV format
+extend Python script to export data in the json format
 """
 if __name__ == '__main__':
     import json
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     for item in data_2:
         task = {"task": item['title'],
                 "completed": item['completed'],
-                "username": data_1['username']
+                "username": response_1.json()['username']
                 }
         tasks.append(task)
     user_tasks = {data_1['id']: tasks}
